@@ -34,39 +34,29 @@ public class Extras {
 		}
 	}
 	
+	public static void createMenuItems(JMenu jm, JMenuItem jmi, String s) {
+		jmi.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				puzzle(Consts.puzzle3);
+				System.out.println(s);
+			}
+		});
+		jm.add(jmi);
+	}
+	
 	public static JMenu addExtraMenu() {
 		JMenu extra= new JMenu("Extras");
 		JMenuItem extraItem1= new JMenuItem("Set Board to Puzzle 1");
 		JMenuItem extraItem2= new JMenuItem("Set Board to Puzzle 2");
 		JMenuItem extraItem3= new JMenuItem("Set Board to Puzzle 3");
+		JMenuItem extraItem4= new JMenuItem("Set Board to Puzzle 4");
 		
-		extraItem1.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				puzzle(Consts.puzzle1);
-				System.out.println("Board -> Puzzle 1");
-			}
-		});
-		extra.add(extraItem1);
-		
-		extraItem2.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				puzzle(Consts.puzzle2);
-				System.out.println("Board -> Puzzle 2");
-			}
-		});
-		extra.add(extraItem2);
-		
-		extraItem3.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				puzzle(Consts.puzzle3);
-				System.out.println("Board -> Puzzle 3");
-			}
-		});
-		extra.add(extraItem3);
-		
+		createMenuItems(extra, extraItem1, "Board -> Puzzle 1");
+		createMenuItems(extra, extraItem2, "Board -> Puzzle 2");
+		createMenuItems(extra, extraItem3, "Board -> Puzzle 3");
+		createMenuItems(extra, extraItem4, "Board -> Puzzle 4");
+
 		return extra;
 	}
 }
